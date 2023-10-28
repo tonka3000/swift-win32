@@ -21,15 +21,20 @@ let SwiftWin32 = Package(
   ],
   targets: [
     .target(
+      name: "CoreAnimation",
+      path: "Sources/SwiftWin32/CoreAnimation"
+    ),
+    .target(
       name: "SwiftWin32",
       dependencies: [
+        "CoreAnimation",
         .product(name: "Logging", package: "swift-log"),
         .product(name: "OrderedCollections", package: "swift-collections"),
         .product(name: "cassowary", package: "cassowary"),
         .product(name: "SwiftCOM", package: "SwiftCOM"),
       ],
       path: "Sources/SwiftWin32",
-      exclude: ["CMakeLists.txt"],
+      exclude: ["CoreAnimation", "CMakeLists.txt"],
       linkerSettings: [
         .linkedLibrary("User32"),
         .linkedLibrary("ComCtl32"),
